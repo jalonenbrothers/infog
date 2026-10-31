@@ -3,5 +3,7 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.php [QSA,L]
-RedirectMatch 404 ^/(lib|src|tests|migrations|data)/
+RedirectMatch 404 ^/(lib|src|tests|migrations)/
+# data/ raw files stay blocked EXCEPT the whitelisted public endpoint slug(s):
+RedirectMatch 404 ^/data/(?!uk-wealth-timeline\.json$)[a-z0-9-]+\.(json|md)$
 RedirectMatch 404 ^/config\.example\.php$

@@ -86,5 +86,44 @@ foreach ($slugs as $s) {
     ok("data/$s.md exists", is_file($root . "/data/$s.md"));
 }
 
+// 4) .htaccess: the public data endpoint slug must be whitelisted (negative
+//    lookahead), so Apache lets /data/<slug>.json through to index.php while
+//    raw files (wealth-uk.json, sources.md) stay 404. Static check so this
+//    runs without Apache; the end-to-end check runs under the QA container.
+$ht = (string)file_get_contents($root . '/.htaccess');
+ok('htaccess blocks internals', strpos($ht, 'RedirectMatch 404 ^/(lib|src|tests|migrations)/') !== false);
+ok('htaccess does NOT blanket-block data/', strpos($ht, 'migrations|data)') === false);
+foreach ($slugs as $s) {
+    $escaped = str_replace('.', '\.', $s);
+    ok("htaccess whitelists data endpoint /data/$s.json",
+        strpos($ht, "(?!$escaped\.json\$)") !== false);
+}
+
+// 5) live endpoint check when served by a real Apache (BASE_URL env), else skipped
+$base = getenv('INFOG_BASE_URL');
+if ($base) {
+    foreach ($slugs as $s) {
+        $ctx = stream_context_create(['http' => ['ignore_errors' => true, 'timeout' => 5]]);
+        $body = @file_get_contents(rtrim($base, '/') . "/data/$s.json", false, $ctx);
+        $code = 0;
+        foreach ($http_response_header ?? [] as $h) {
+            if (preg_match('#^HTTP/\S+\s+(\d{3})#', $h, $hm)) { $code = (int)$hm[1]; }
+        }
+        ok("GET /data/$s.json → 200 application/json",
+            $code === 200 && strpos(implode(' ', $http_response_header ?? []), 'application/json') !== false,
+            "code=$code");
+    }
+    // raw internals must stay blocked
+    foreach (['/data/wealth-uk.json', '/data/sources.md', '/lib/bootstrap.php'] as $p) {
+        $ctx = stream_context_create(['http' => ['ignore_errors' => true, 'timeout' => 5]]);
+        @file_get_contents(rtrim($base, '/') . $p, false, $ctx);
+        $code = 0;
+        foreach ($http_response_header ?? [] as $h) {
+            if (preg_match('#^HTTP/\S+\s+(\d{3})#', $h, $hm)) { $code = (int)$hm[1]; }
+        }
+        ok("GET $p → 404 (stays blocked)", $code === 404, "code=$code");
+    }
+}
+
 echo "\n" . ($fail ? "FAILED: $fail failed, $pass passed\n" : "OK: $pass passed, 0 failed\n");
 exit($fail ? 1 : 0);
