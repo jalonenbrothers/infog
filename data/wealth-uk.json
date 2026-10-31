@@ -1,0 +1,526 @@
+{
+  "dataset": "UK household wealth distribution \u2014 infog timeline animation",
+  "assembled": "2026-10-31",
+  "units": "gbn = \u00a3 billion, nominal/current prices unless noted",
+  "annual": [
+    {
+      "year": 1995,
+      "total_wealth_gbp_bn": 2596.6,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 52.55,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": null,
+      "interpolated_top10": null
+    },
+    {
+      "year": 1996,
+      "total_wealth_gbp_bn": 2809.2,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 54.05,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": null,
+      "interpolated_top10": null
+    },
+    {
+      "year": 1997,
+      "total_wealth_gbp_bn": 3065.5,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 56.53,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": null,
+      "interpolated_top10": null
+    },
+    {
+      "year": 1998,
+      "total_wealth_gbp_bn": 3532.7,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 56.68,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": null,
+      "interpolated_top10": null
+    },
+    {
+      "year": 1999,
+      "total_wealth_gbp_bn": 3870.3,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 54.88,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": null,
+      "interpolated_top10": null
+    },
+    {
+      "year": 2000,
+      "total_wealth_gbp_bn": 4140.9,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 55.78,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": null,
+      "interpolated_top10": null
+    },
+    {
+      "year": 2001,
+      "total_wealth_gbp_bn": 4235.6,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 55.11,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": null,
+      "interpolated_top10": null
+    },
+    {
+      "year": 2002,
+      "total_wealth_gbp_bn": 4576.0,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 55.45,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": null,
+      "interpolated_top10": null
+    },
+    {
+      "year": 2003,
+      "total_wealth_gbp_bn": 4983.0,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 54.49,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": null,
+      "interpolated_top10": null
+    },
+    {
+      "year": 2004,
+      "total_wealth_gbp_bn": 5470.6,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 54.03,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": null,
+      "interpolated_top10": null
+    },
+    {
+      "year": 2005,
+      "total_wealth_gbp_bn": 5910.9,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 54.15,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": null,
+      "interpolated_top10": null
+    },
+    {
+      "year": 2006,
+      "total_wealth_gbp_bn": 6284.8,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 54.44,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": null,
+      "interpolated_top10": null
+    },
+    {
+      "year": 2007,
+      "total_wealth_gbp_bn": 6702.5,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 54.39,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": 43.9,
+      "interpolated_top10": false
+    },
+    {
+      "year": 2008,
+      "total_wealth_gbp_bn": 6005.9,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 53.81,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": 43.7,
+      "interpolated_top10": true
+    },
+    {
+      "year": 2009,
+      "total_wealth_gbp_bn": 6528.4,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 54.41,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": 43.6,
+      "interpolated_top10": false
+    },
+    {
+      "year": 2010,
+      "total_wealth_gbp_bn": 6795.8,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 54.63,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": 43.6,
+      "interpolated_top10": true
+    },
+    {
+      "year": 2011,
+      "total_wealth_gbp_bn": 7144.8,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 55.84,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": 43.6,
+      "interpolated_top10": false
+    },
+    {
+      "year": 2012,
+      "total_wealth_gbp_bn": 7399.2,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 55.68,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": 44.1,
+      "interpolated_top10": true
+    },
+    {
+      "year": 2013,
+      "total_wealth_gbp_bn": 7686.0,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 56.77,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": 44.7,
+      "interpolated_top10": false
+    },
+    {
+      "year": 2014,
+      "total_wealth_gbp_bn": 8583.8,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 57.81,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": 44.6,
+      "interpolated_top10": true
+    },
+    {
+      "year": 2015,
+      "total_wealth_gbp_bn": 9011.9,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 56.61,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": 44.6,
+      "interpolated_top10": false
+    },
+    {
+      "year": 2016,
+      "total_wealth_gbp_bn": 9779.9,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 57.14,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": 44.6,
+      "interpolated_top10": true
+    },
+    {
+      "year": 2017,
+      "total_wealth_gbp_bn": 10195.8,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 57.55,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": 44.6,
+      "interpolated_top10": false
+    },
+    {
+      "year": 2018,
+      "total_wealth_gbp_bn": 10059.9,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 57.14,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": 44.0,
+      "interpolated_top10": true
+    },
+    {
+      "year": 2019,
+      "total_wealth_gbp_bn": 10572.0,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 56.95,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": 43.5,
+      "interpolated_top10": false
+    },
+    {
+      "year": 2020,
+      "total_wealth_gbp_bn": 11341.4,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 56.84,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": 42.1,
+      "interpolated_top10": true
+    },
+    {
+      "year": 2021,
+      "total_wealth_gbp_bn": 11788.2,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 57.02,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": 40.7,
+      "interpolated_top10": false
+    },
+    {
+      "year": 2022,
+      "total_wealth_gbp_bn": 11067.7,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 57.07,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": null,
+      "interpolated_top10": null
+    },
+    {
+      "year": 2023,
+      "total_wealth_gbp_bn": 10846.4,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 57.12,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": null,
+      "interpolated_top10": null
+    },
+    {
+      "year": 2024,
+      "total_wealth_gbp_bn": 10997.9,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": 57.14,
+      "wid_source_ref": "wid-2026-owid",
+      "was_top10_share_pct": null,
+      "interpolated_top10": null
+    },
+    {
+      "year": 2025,
+      "total_wealth_gbp_bn": 11158.5,
+      "total_wealth_source_ref": "ons-nbs-2026",
+      "interpolated_total": false,
+      "wid_top10_share_pct": null,
+      "wid_source_ref": null,
+      "was_top10_share_pct": null,
+      "interpolated_top10": null
+    }
+  ],
+  "was_rounds": [
+    {
+      "period": "Jul 2006\u2013Jun 2008 (Wave 1)",
+      "mid_year": 2007,
+      "total_wealth_was_gbn": 8464.0,
+      "top10_share_pct": 43.9,
+      "top10_share_pct_precise": 43.877,
+      "decile_shares_pct": [
+        -0.02,
+        0.52,
+        1.37,
+        2.9,
+        4.73,
+        6.75,
+        9.16,
+        12.45,
+        18.27,
+        43.88
+      ],
+      "source_ref": "ons-was-t2.2",
+      "method_break": false
+    },
+    {
+      "period": "Jul 2008\u2013Jun 2010 (Wave 2)",
+      "mid_year": 2009,
+      "total_wealth_was_gbn": 8946.3,
+      "top10_share_pct": 43.6,
+      "top10_share_pct_precise": 43.565,
+      "decile_shares_pct": [
+        0.09,
+        0.6,
+        1.5,
+        2.99,
+        4.72,
+        6.68,
+        9.07,
+        12.46,
+        18.32,
+        43.56
+      ],
+      "source_ref": "ons-was-t2.2",
+      "method_break": false
+    },
+    {
+      "period": "Jul 2010\u2013Jun 2012 (Wave 3)",
+      "mid_year": 2011,
+      "total_wealth_was_gbn": 9448.4,
+      "top10_share_pct": 43.6,
+      "top10_share_pct_precise": 43.556,
+      "decile_shares_pct": [
+        0.07,
+        0.59,
+        1.46,
+        2.89,
+        4.6,
+        6.56,
+        9.08,
+        12.63,
+        18.56,
+        43.56
+      ],
+      "source_ref": "ons-was-t2.2",
+      "method_break": false
+    },
+    {
+      "period": "Jul 2012\u2013Jun 2014 (Wave 4)",
+      "mid_year": 2013,
+      "total_wealth_was_gbn": 10885.9,
+      "top10_share_pct": 44.7,
+      "top10_share_pct_precise": 44.723,
+      "decile_shares_pct": [
+        0.07,
+        0.49,
+        1.24,
+        2.58,
+        4.22,
+        6.23,
+        8.81,
+        12.59,
+        19.04,
+        44.72
+      ],
+      "source_ref": "ons-was-t2.2",
+      "method_break": false
+    },
+    {
+      "period": "Jul 2014\u2013Jun 2016 (Wave 5)",
+      "mid_year": 2015,
+      "total_wealth_was_gbn": 12933.7,
+      "top10_share_pct": 44.6,
+      "top10_share_pct_precise": 44.564,
+      "decile_shares_pct": [
+        0.07,
+        0.47,
+        1.26,
+        2.6,
+        4.23,
+        6.24,
+        8.82,
+        12.62,
+        19.12,
+        44.56
+      ],
+      "source_ref": "ons-was-t2.2",
+      "method_break": false
+    },
+    {
+      "period": "Apr 2014\u2013Mar 2016 (Round 5)",
+      "mid_year": 2015,
+      "total_wealth_was_gbn": 12572.4,
+      "top10_share_pct": 44.6,
+      "top10_share_pct_precise": 44.571,
+      "decile_shares_pct": [
+        0.07,
+        0.48,
+        1.26,
+        2.6,
+        4.24,
+        6.25,
+        8.81,
+        12.64,
+        19.08,
+        44.57
+      ],
+      "source_ref": "ons-was-t2.2",
+      "method_break": false
+    },
+    {
+      "period": "Apr 2016\u2013Mar 2018 (Round 6)",
+      "mid_year": 2017,
+      "total_wealth_was_gbn": 14628.0,
+      "top10_share_pct": 44.6,
+      "top10_share_pct_precise": 44.588,
+      "decile_shares_pct": [
+        0.07,
+        0.46,
+        1.25,
+        2.54,
+        4.16,
+        6.16,
+        8.89,
+        12.68,
+        19.21,
+        44.59
+      ],
+      "source_ref": "ons-was-t2.2",
+      "method_break": false
+    },
+    {
+      "period": "Apr 2018\u2013Mar 2020 (Round 7)",
+      "mid_year": 2019,
+      "total_wealth_was_gbn": 15221.1,
+      "top10_share_pct": 43.5,
+      "top10_share_pct_precise": 43.487,
+      "decile_shares_pct": [
+        0.08,
+        0.49,
+        1.27,
+        2.57,
+        4.29,
+        6.37,
+        9.07,
+        12.89,
+        19.49,
+        43.49
+      ],
+      "source_ref": "ons-was-t2.2",
+      "method_break": false
+    },
+    {
+      "period": "Apr 2020\u2013Mar 2022 (Round 8)",
+      "mid_year": 2021,
+      "total_wealth_was_gbn": 13567.9,
+      "top10_share_pct": 40.7,
+      "top10_share_pct_precise": 40.708,
+      "decile_shares_pct": [
+        0.1,
+        0.58,
+        1.44,
+        2.89,
+        4.81,
+        7.04,
+        9.75,
+        13.31,
+        19.37,
+        40.71
+      ],
+      "source_ref": "ons-was-t2.2",
+      "method_break": true
+    }
+  ],
+  "international_wid_top10_2024": {
+    "France": 59.88,
+    "Germany": 58.52,
+    "Spain": 57.35,
+    "Sweden": 68.22,
+    "United States": 69.54,
+    "United Kingdom": 57.14
+  },
+  "notes": {
+    "two_measures": "WAS (survey, household incl. private pensions, GB) and NBS (national accounts, household sector net worth, UK) measure different things and DO NOT match; ONS states they are not directly comparable.",
+    "was_top10": "WAS top-10% share comes in 2-year rounds; annual values are LINEAR INTERPOLATION (interpolated_top10=true) between round mid-years only; no WAS value outside 2007\u20132021.",
+    "was_method_break": "2020\u201322 round (top10 40.7%) uses SCAPE-based pension methodology \u2014 a BREAK vs earlier rounds (43\u201345%). Do not read 45%\u219241% as pure real change.",
+    "wid_vs_was": "WID top-10 (~57%) is individual net personal wealth from capitalization methods and is systematically higher than the WAS household survey floor (~43-45%); both are real published numbers.",
+    "top1pct": "ONS states top-1% household share = 10% of total wealth (Apr 2020\u2013Mar 2022, prose only). WID-based estimates (Advani/Bangham/Leslie; Wealth Tax Commission) find surveys under-capture the top, so 10% is a floor.",
+    "flows_gap": "GAP: no clean annual public wealth-flow (savings vs appreciation) series was assembled. Best flow-adjacent evidence: WAS Table 2.1 shows 2006-08\u21922018-20 growth was driven by private pension wealth (2886\u21926445 \u00a3bn) and net property (3537\u21925458 \u00a3bn); NBS 2024 household net worth rose \u00a3217.7bn, driven by land (+\u00a3176.7bn) i.e. appreciation, not saving. Flagged as honest gap.",
+    "projection": "PROJECTION METHOD (honest): for years beyond latest data, do NOT extrapolate the distribution \u2014 hold the last observed WID top-10 share constant with a \u00b11pp uncertainty band (2013\u20132024 series moved within ~1pp of 57); for NBS total, use last-decade CAGR (~3%/yr nominal) with a \u00b12%/yr band, clearly labelled as trend extrapolation, not forecast. Any animated projection must be visually flagged as extrapolated."
+  },
+  "projection_method_note": "Simple trend extrapolation only, never beyond 2 years, with explicit uncertainty bands and an 'extrapolated' flag in the animation. No causal model."
+}
