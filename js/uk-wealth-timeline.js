@@ -98,7 +98,7 @@
   /* ---------- data shaping ---------- */
   var years = [];      // [{year,total,wid,proj:boolean}]
   var minYear, maxYear;
-  var PROJ_SHARE, CAGR, T_LAST;
+  var PROJ_SHARE, CAGR, T_LAST, DATA_END;
 
   function shapeData(d) {
     var annual = d.annual;
@@ -110,14 +110,18 @@
     years.forEach(function (y) { if (y.wid != null) last = y.wid; else y.wid = last; });
     minYear = years[0].year; maxYear = years[years.length - 1].year;
     T_LAST = years[years.length - 1].total;
+    DATA_END = years[years.length - 1].year;
     // last-decade CAGR (2015->2025)
     var y0 = null;
     years.forEach(function (y) { if (y.year === maxYear - 10) y0 = y.total; });
     if (!y0) y0 = years[0].total;
     CAGR = Math.pow(T_LAST / y0, 1 / 10) - 1;
     PROJ_SHARE = years[years.length - 1].wid;
-    // append projection years
-    for (var i = 1; i <= 2; i++) {
+    // append projection years through 2040 (operator-directed extension).
+    // Steady-state trend extrapolation ONLY: share held constant +/-1pp,
+    // total at last-decade CAGR +/-2pp/yr, widening band. NOT a forecast.
+    var LAST_PROJ_YEAR = 2040;
+    for (var i = 1; i <= LAST_PROJ_YEAR - maxYear; i++) {
       years.push({
         year: maxYear + i,
         total: T_LAST * Math.pow(1 + CAGR, i),
@@ -125,6 +129,7 @@
         proj: true
       });
     }
+    maxYear = LAST_PROJ_YEAR; // timeline domain now ends at 2040
   }
 
   function rowAt(yearF) {
@@ -184,16 +189,24 @@
 
   /* ---------- share race chart ---------- */
   var RX0 = 24, RX1 = 696, RY = 596, RY0 = 560, RY1 = 585; // value 50%..70% band
-  function raceX(year) { return RX0 + (year - minYear) / (maxYear + 2 - minYear) * (RX1 - RX0); }
+  function raceX(year) { return RX0 + (year - minYear) / (maxYear - minYear) * (RX1 - RX0); }
   function raceY(pct) { return RY1 - (clamp(pct, 50, 70) - 50) / 20 * (RY1 - RY0); }
 
   function buildRace(d) {
-    var pts = years.filter(function (y) { return y.year <= maxYear; })
+    var pts = years.filter(function (y) { return !y.proj; })
       .map(function (y) { return raceX(y.year).toFixed(1) + ',' + raceY(y.wid).toFixed(1); })
       .join(' ');
     raceGroup.appendChild(el('polyline', { points: pts, fill: 'none', stroke: '#c14646', 'stroke-width': 2.5 }));
-    raceGroup.appendChild(el('line', { x1: RX0, y1: raceY(57.14), x2: RX1, y2: raceY(57.14),
-      stroke: '#b9a86a', 'stroke-dasharray': '5 4', 'stroke-width': 1.5 }));
+    // projection segment of the share line: dashed, with +/-1pp band
+    var pStart = raceX(DATA_END), pEnd = raceX(maxYear);
+    raceGroup.appendChild(el('line', { x1: pStart, y1: raceY(PROJ_SHARE), x2: pEnd, y2: raceY(PROJ_SHARE),
+      stroke: '#c14646', 'stroke-dasharray': '5 4', 'stroke-width': 2.5, 'stroke-opacity': 0.8 }));
+    raceGroup.appendChild(el('rect', { x: pStart, y: raceY(PROJ_SHARE + 1),
+      width: pEnd - pStart, height: raceY(PROJ_SHARE - 1) - raceY(PROJ_SHARE + 1),
+      fill: '#c14646', 'fill-opacity': 0.12 }));
+    raceGroup.appendChild(el('text', { x: pEnd - 2, y: raceY(PROJ_SHARE) - 6, 'text-anchor': 'end',
+      'class': 'stage-sub', 'font-size': '9', fill: '#b9a86a' },
+      'extrapolated to 2040 ±1pp'));
     // WAS dots (survey rounds) with dashed jump across method break
     var rounds = d.was_rounds || [];
     for (var i = 0; i < rounds.length; i++) {
@@ -217,7 +230,7 @@
     { name: 'Top 10% vs the other 90%', dur: 4.5, fn: phSplit },
     { name: 'Year-by-year growth', dur: 18, fn: phGrow },
     { name: 'The share race', dur: 9, fn: phRace },
-    { name: 'Projection 2026–27 (extrapolation)', dur: 7, fn: phProj },
+    { name: 'Projection 2026–2040 (extrapolation)', dur: 12, fn: phProj },
     { name: 'Verdict', dur: 1.5, fn: phVerdict }
   ];
   var TOTAL = PH.reduce(function (s, p) { return s + p.dur; }, 0);
@@ -284,7 +297,7 @@
   }
 
   function phGrow(p) {
-    var yF = lerp(minYear, maxYear, soft(p));
+    var yF = lerp(minYear, DATA_END, soft(p));
     var row = rowAt(yF);
     setPools(row, false);
     txtYear.textContent = Math.round(yF);
@@ -294,7 +307,7 @@
   }
 
   function phRace(p) {
-    var yF = lerp(minYear, maxYear, soft(p));
+    var yF = lerp(minYear, DATA_END, soft(p));
     var row = rowAt(yF);
     setPools(row, false);
     txtYear.textContent = Math.round(yF);
@@ -306,15 +319,15 @@
   }
 
   function phProj(p) {
-    var yF = lerp(maxYear, maxYear + 2, soft(p));
+    var yF = lerp(DATA_END, maxYear, soft(p));
     var row = rowAt(yF);
     setPools(row, true);
     txtYear.textContent = Math.round(yF);
     projBadge.textContent = 'EXTRAPOLATION — trend, not forecast';
-    txtSub.textContent = 'Projection: share held constant ±1pp, total at last-decade CAGR ±2pp/yr';
+    txtSub.textContent = 'Projection to 2040: share held constant ±1pp, total at last-decade CAGR ±2pp/yr';
     footnote.textContent = 'Projection method: WID 2024 share held constant; NBS total extrapolated (last-decade CAGR). Uncertainty band shown.';
     // band radii: total +/-2%/yr, share +/-1pp
-    var yr = row.year - maxYear;
+    var yr = row.year - DATA_END;
     var tHi = T_LAST * Math.pow(1 + CAGR + 0.02, yr), tLo = T_LAST * Math.pow(1 + CAGR - 0.02, yr);
     var sHi = (PROJ_SHARE + 1) / 100, sLo = (PROJ_SHARE - 1) / 100;
     topBand.setAttribute('r', rOf(tHi * sHi).toFixed(1));
@@ -384,7 +397,8 @@
   }
   function showVerdict() {
     if (!verdictEl.hidden) return;
-    var r1995 = years[0], r2025 = years[years.length - 3], r2024 = years[years.length - 4];
+    var real = years.filter(function (y) { return !y.proj; });
+    var r1995 = real[0], r2025 = real[real.length - 1], r2024 = real[real.length - 2];
     var intl = (DATA.international_wid_top10_2024) || {};
     var intlRows = Object.keys(intl).sort(function (a, b) { return intl[b] - intl[a]; })
       .map(function (k) { return '<li>' + k + ' — ' + intl[k].toFixed(1) + '%</li>'; }).join('');
@@ -396,6 +410,9 @@
       verdictFigure(fmtPct(r1995.wid), 'held by the richest 10% of individuals, 1995 (WID)') +
       verdictFigure(fmtPct(r2024.wid), '…by 2024. The 90% share fell accordingly.') +
       '</div>' +
+      '<p class="stage-sub">Extrapolated to 2040 (trend, not forecast): total ≈ ' +
+      fmtGBP(T_LAST * Math.pow(1 + CAGR, 2040 - DATA_END)) + ' at last-decade CAGR, top-10% share held at ' +
+      fmtPct(PROJ_SHARE) + ' ±1pp.</p>' +
       '<h3>Two published measures — both real</h3>' +
       '<p>The animation&rsquo;s main series is WID.world&rsquo;s top-10% share of <em>individual</em> net wealth (~57%). ' +
       'The ONS Wealth &amp; Assets Survey puts the top 10% of <em>households</em> at 41% (2020–22) — and part of its drop ' +
@@ -405,7 +422,7 @@
       '<h3>What would falsify the projection</h3>' +
       '<ul><li>WAS rounds re-basing the top-10% share under the updated pension method</li>' +
       '<li>WID revising UK capitalization factors</li>' +
-      '<li>Policy shocks (wealth taxes, pension reform) — the projection assumes none, which is why it stops at 2027</li></ul>' +
+      '<li>Policy shocks (wealth taxes, pension reform) — the projection assumes none, which is why it is a trend extrapolation, not a forecast</li></ul>' +
       '<p class="stage-sub">Sources: ONS Wealth &amp; Assets Survey Tables 2.1/2.2 (24 Jan 2025) · ONS National Balance Sheet 2026 (CGRC) · ' +
       'WID.world via Our World in Data (2026) — full traceability in the repo&rsquo;s <a href="/about/uk-wealth-timeline">sources page</a>.</p>';
     verdictEl.hidden = false;

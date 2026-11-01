@@ -1,7 +1,7 @@
 {
-  "dataset": "UK household wealth distribution \u2014 infog timeline animation",
+  "dataset": "UK household wealth distribution — infog timeline animation",
   "assembled": "2026-10-31",
-  "units": "gbn = \u00a3 billion, nominal/current prices unless noted",
+  "units": "gbn = £ billion, nominal/current prices unless noted",
   "annual": [
     {
       "year": 1995,
@@ -316,7 +316,7 @@
   ],
   "was_rounds": [
     {
-      "period": "Jul 2006\u2013Jun 2008 (Wave 1)",
+      "period": "Jul 2006–Jun 2008 (Wave 1)",
       "mid_year": 2007,
       "total_wealth_was_gbn": 8464.0,
       "top10_share_pct": 43.9,
@@ -337,7 +337,7 @@
       "method_break": false
     },
     {
-      "period": "Jul 2008\u2013Jun 2010 (Wave 2)",
+      "period": "Jul 2008–Jun 2010 (Wave 2)",
       "mid_year": 2009,
       "total_wealth_was_gbn": 8946.3,
       "top10_share_pct": 43.6,
@@ -358,7 +358,7 @@
       "method_break": false
     },
     {
-      "period": "Jul 2010\u2013Jun 2012 (Wave 3)",
+      "period": "Jul 2010–Jun 2012 (Wave 3)",
       "mid_year": 2011,
       "total_wealth_was_gbn": 9448.4,
       "top10_share_pct": 43.6,
@@ -379,7 +379,7 @@
       "method_break": false
     },
     {
-      "period": "Jul 2012\u2013Jun 2014 (Wave 4)",
+      "period": "Jul 2012–Jun 2014 (Wave 4)",
       "mid_year": 2013,
       "total_wealth_was_gbn": 10885.9,
       "top10_share_pct": 44.7,
@@ -400,7 +400,7 @@
       "method_break": false
     },
     {
-      "period": "Jul 2014\u2013Jun 2016 (Wave 5)",
+      "period": "Jul 2014–Jun 2016 (Wave 5)",
       "mid_year": 2015,
       "total_wealth_was_gbn": 12933.7,
       "top10_share_pct": 44.6,
@@ -421,7 +421,7 @@
       "method_break": false
     },
     {
-      "period": "Apr 2014\u2013Mar 2016 (Round 5)",
+      "period": "Apr 2014–Mar 2016 (Round 5)",
       "mid_year": 2015,
       "total_wealth_was_gbn": 12572.4,
       "top10_share_pct": 44.6,
@@ -442,7 +442,7 @@
       "method_break": false
     },
     {
-      "period": "Apr 2016\u2013Mar 2018 (Round 6)",
+      "period": "Apr 2016–Mar 2018 (Round 6)",
       "mid_year": 2017,
       "total_wealth_was_gbn": 14628.0,
       "top10_share_pct": 44.6,
@@ -463,7 +463,7 @@
       "method_break": false
     },
     {
-      "period": "Apr 2018\u2013Mar 2020 (Round 7)",
+      "period": "Apr 2018–Mar 2020 (Round 7)",
       "mid_year": 2019,
       "total_wealth_was_gbn": 15221.1,
       "top10_share_pct": 43.5,
@@ -484,7 +484,7 @@
       "method_break": false
     },
     {
-      "period": "Apr 2020\u2013Mar 2022 (Round 8)",
+      "period": "Apr 2020–Mar 2022 (Round 8)",
       "mid_year": 2021,
       "total_wealth_was_gbn": 13567.9,
       "top10_share_pct": 40.7,
@@ -515,12 +515,13 @@
   },
   "notes": {
     "two_measures": "WAS (survey, household incl. private pensions, GB) and NBS (national accounts, household sector net worth, UK) measure different things and DO NOT match; ONS states they are not directly comparable.",
-    "was_top10": "WAS top-10% share comes in 2-year rounds; annual values are LINEAR INTERPOLATION (interpolated_top10=true) between round mid-years only; no WAS value outside 2007\u20132021.",
-    "was_method_break": "2020\u201322 round (top10 40.7%) uses SCAPE-based pension methodology \u2014 a BREAK vs earlier rounds (43\u201345%). Do not read 45%\u219241% as pure real change.",
+    "was_top10": "WAS top-10% share comes in 2-year rounds; annual values are LINEAR INTERPOLATION (interpolated_top10=true) between round mid-years only; no WAS value outside 2007–2021.",
+    "was_method_break": "2020–22 round (top10 40.7%) uses SCAPE-based pension methodology — a BREAK vs earlier rounds (43–45%). Do not read 45%→41% as pure real change.",
     "wid_vs_was": "WID top-10 (~57%) is individual net personal wealth from capitalization methods and is systematically higher than the WAS household survey floor (~43-45%); both are real published numbers.",
-    "top1pct": "ONS states top-1% household share = 10% of total wealth (Apr 2020\u2013Mar 2022, prose only). WID-based estimates (Advani/Bangham/Leslie; Wealth Tax Commission) find surveys under-capture the top, so 10% is a floor.",
-    "flows_gap": "GAP: no clean annual public wealth-flow (savings vs appreciation) series was assembled. Best flow-adjacent evidence: WAS Table 2.1 shows 2006-08\u21922018-20 growth was driven by private pension wealth (2886\u21926445 \u00a3bn) and net property (3537\u21925458 \u00a3bn); NBS 2024 household net worth rose \u00a3217.7bn, driven by land (+\u00a3176.7bn) i.e. appreciation, not saving. Flagged as honest gap.",
-    "projection": "PROJECTION METHOD (honest): for years beyond latest data, do NOT extrapolate the distribution \u2014 hold the last observed WID top-10 share constant with a \u00b11pp uncertainty band (2013\u20132024 series moved within ~1pp of 57); for NBS total, use last-decade CAGR (~3%/yr nominal) with a \u00b12%/yr band, clearly labelled as trend extrapolation, not forecast. Any animated projection must be visually flagged as extrapolated."
+    "top1pct": "ONS states top-1% household share = 10% of total wealth (Apr 2020–Mar 2022, prose only). WID-based estimates (Advani/Bangham/Leslie; Wealth Tax Commission) find surveys under-capture the top, so 10% is a floor.",
+    "flows_gap": "GAP: no clean annual public wealth-flow (savings vs appreciation) series was assembled. Best flow-adjacent evidence: WAS Table 2.1 shows 2006-08→2018-20 growth was driven by private pension wealth (2886→6445 £bn) and net property (3537→5458 £bn); NBS 2024 household net worth rose £217.7bn, driven by land (+£176.7bn) i.e. appreciation, not saving. Flagged as honest gap.",
+    "projection": "PROJECTION METHOD (honest, operator-extended to 2040): for years beyond latest data, do NOT extrapolate the distribution — hold the last observed WID top-10 share constant with a ±1pp uncertainty band (2013–2024 series moved within ~1pp of 57); for NBS total, use last-decade CAGR (2015→2025 = ~2.2%/yr nominal) with a ±2%/yr band, widening with distance from the last observed year. Clearly labelled as steady-state TREND EXTRAPOLATION, not a forecast: no policy shocks, wars, or AI-shock scenarios are modelled. Any animated projection must be visually flagged as extrapolated (dashed + band + label).",
+    "projection_extension_2040": "2040 EXTENSION (2026-11-01, operator instruction): animation timeline now runs to 2040. Method unchanged, only horizon extended: WID share 57.14% held constant ±1pp; NBS total from 2025 £11,158.5bn at last-decade CAGR (2015→2025, ~2.16%/yr nominal) ±2pp band. These are uncertainty bands, not scenarios."
   },
-  "projection_method_note": "Simple trend extrapolation only, never beyond 2 years, with explicit uncertainty bands and an 'extrapolated' flag in the animation. No causal model."
+  "projection_method_note": "Steady-state trend extrapolation to 2040 (operator-directed horizon), with explicit widening uncertainty bands and an 'extrapolated' flag in the animation. No causal model, no scenarios."
 }
