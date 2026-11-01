@@ -30,6 +30,19 @@
   /* ---------- view registry & selection ---------- */
   var VIEWS = window.WealthViews || {};
   var viewKey = 'hourglass';
+  // deep link: server sets data-initial-view from ?view=hourglass|people|circles
+  var initialView = viewsel ? (viewsel.getAttribute('data-initial-view') || '') : '';
+  if (initialView === 'people' || initialView === 'circles' || initialView === 'hourglass') {
+    viewKey = initialView;
+  }
+  function syncUrl(key) {
+    // keep the address bar shareable without polluting history
+    try {
+      var u = new URL(window.location.href);
+      u.searchParams.set('view', key);
+      window.history.replaceState(null, '', u);
+    } catch (err) { /* old browsers: skip, no harm */ }
+  }
   function markSelected(key) {
     if (!viewsel) return;
     var btns = viewsel.querySelectorAll('.viewsel-item');
@@ -52,6 +65,7 @@
     if (!VIEWS[key] || !MODEL) return;
     viewKey = key;
     markSelected(key);
+    syncUrl(key);
     if (current) current.destroy();
     for (var i = stage.children.length - 1; i >= 0; i--) {
       if (stage.children[i].tagName === 'svg') stage.removeChild(stage.children[i]);

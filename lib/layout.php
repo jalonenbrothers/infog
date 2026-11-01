@@ -19,6 +19,8 @@ function infog_layout(string $title, string $body, ?string $desc = null): string
 <title>{$fullTitle}</title>
 <meta name="description" content="{$desc}">
 <link rel="stylesheet" href="/assets/site.css">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="icon" type="image/x-icon" sizes="32x32 16x16" href="/assets/favicon.ico">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>

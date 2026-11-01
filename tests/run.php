@@ -172,5 +172,30 @@ ok('per-head multiple ~12x at 57.14% share', abs($x - 12.0) < 0.05, sprintf('%.3
 ok('controller timeline ends at 2040',
     strpos((string)file_get_contents($root . '/js/wealth-core.js'), '2040') !== false);
 
+// 7) deep-link ?view= + favicon (QA polish card t_7c67f3d0)
+$viewPhp = (string)file_get_contents($root . '/index.php');
+ok('deep-link: server whitelists ?view values (hourglass|people|circles)',
+    strpos($viewPhp, "['hourglass', 'people', 'circles']") !== false);
+ok('deep-link: selector carries data-initial-view',
+    strpos($viewPhp, 'data-initial-view="{$view}"') !== false);
+ok('deep-link: aria-selected is server-computed per view',
+    strpos($viewPhp, '$selHourglass') !== false && strpos($viewPhp, '$selPeople') !== false);
+$ctrl = (string)file_get_contents($root . '/js/uk-wealth-timeline.js');
+ok('deep-link: JS reads data-initial-view',
+    strpos($ctrl, 'data-initial-view') !== false);
+ok('deep-link: JS syncs ?view= on switch (replaceState, no history pollution)',
+    strpos($ctrl, "searchParams.set('view'") !== false && strpos($ctrl, 'replaceState') !== false);
+$layoutPhp = (string)file_get_contents($root . '/lib/layout.php');
+ok('favicon: SVG link in head', strpos($layoutPhp, 'favicon.svg') !== false);
+ok('favicon: ICO fallback link in head', strpos($layoutPhp, 'favicon.ico') !== false);
+ok('favicon: assets/favicon.svg exists', is_file($root . '/assets/favicon.svg'));
+$ico = $root . '/assets/favicon.ico';
+$icoOk = is_file($ico);
+if ($icoOk && function_exists('exec')) {
+    exec('file ' . escapeshellarg($ico) . ' 2>/dev/null', $fo, $fc);
+    $icoOk = $fc === 0 && strpos(implode(' ', $fo), 'icon') !== false;
+}
+ok('favicon: assets/favicon.ico is a real ICO (16+32 sizes)', $icoOk);
+
 echo "\n" . ($fail ? "FAILED: $fail failed, $pass passed\n" : "OK: $pass passed, 0 failed\n");
 exit($fail ? 1 : 0);

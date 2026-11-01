@@ -109,6 +109,13 @@ function infog_view(string $slug): void
     if ($s === null) { http_response_code(404); exit('not found'); }
     $jsFile = __DIR__ . '/js/' . $slug . '.js';
     if (!is_file($jsFile)) { http_response_code(404); exit('infographic not found'); }
+    // deep-link: ?view=hourglass|people|circles sets the initial view server-side
+    $views = ['hourglass', 'people', 'circles'];
+    $reqView = $_GET['view'] ?? '';
+    $view = in_array($reqView, $views, true) ? $reqView : 'hourglass';
+    $selHourglass = $view === 'hourglass' ? 'true' : 'false';
+    $selPeople = $view === 'people' ? 'true' : 'false';
+    $selCircles = $view === 'circles' ? 'true' : 'false';
     $slugE = e($slug);
     $titleE = e($s['title']);
     $body = <<<HTML_VIEW_SCRIPTS
@@ -151,10 +158,10 @@ function infog_view(string $slug): void
 
 <section id="infog-viewsel" class="viewsel" aria-label="Animation view mode">
   <p class="viewsel-note">Three ways to see the same numbers:</p>
-  <ol class="viewsel-list" id="infog-view-select-list" role="listbox">
-    <li><button type="button" class="viewsel-item" role="option" aria-selected="true" data-view="hourglass">⧗ The Hourglass<span class="viewsel-hint">flows & sliding neck</span></button></li>
-    <li><button type="button" class="viewsel-item" role="option" aria-selected="false" data-view="people">👥 100 People, One Table<span class="viewsel-hint">coins & per-head split</span></button></li>
-    <li><button type="button" class="viewsel-item" role="option" aria-selected="false" data-view="circles">⬤ Circles (draft 1)<span class="viewsel-hint">the original pools</span></button></li>
+  <ol class="viewsel-list" id="infog-view-select-list" role="listbox" data-initial-view="{$view}">
+    <li><button type="button" class="viewsel-item" role="option" aria-selected="{$selHourglass}" data-view="hourglass">⧗ The Hourglass<span class="viewsel-hint">flows & sliding neck</span></button></li>
+    <li><button type="button" class="viewsel-item" role="option" aria-selected="{$selPeople}" data-view="people">👥 100 People, One Table<span class="viewsel-hint">coins & per-head split</span></button></li>
+    <li><button type="button" class="viewsel-item" role="option" aria-selected="{$selCircles}" data-view="circles">⬤ Circles (draft 1)<span class="viewsel-hint">the original pools</span></button></li>
   </ol>
 </section>
 </article>
