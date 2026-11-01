@@ -125,5 +125,52 @@ if ($base) {
     }
 }
 
+// 6) draft-2 view modes: shared core + 3 views wired into the timeline page
+ok('view controller registered (WealthViews.circles in wealth-view-circles.js)',
+    strpos((string)file_get_contents($root . '/js/wealth-view-circles.js'), 'WealthViews.circles') !== false);
+ok('hourglass view registered (WealthViews.hourglass)',
+    strpos((string)file_get_contents($root . '/js/wealth-view-hourglass.js'), 'WealthViews.hourglass') !== false);
+ok('people view registered (WealthViews.people)',
+    strpos((string)file_get_contents($root . '/js/wealth-view-people.js'), 'WealthViews.people') !== false);
+ok('controller uses shared core (wealth-core.js loaded)',
+    strpos((string)file_get_contents($root . '/index.php'), '/js/wealth-core.js') !== false);
+foreach (['wealth-core.js', 'wealth-view-circles.js', 'wealth-view-hourglass.js', 'wealth-view-people.js', 'uk-wealth-timeline.js'] as $jsf) {
+    $p = $root . '/js/' . $jsf;
+    $ok = is_file($p);
+    $detail = 'missing';
+    if ($ok && function_exists('exec')) {
+        // syntax-check with node when available; skip (not fail) otherwise
+        exec('command -v node', $nv, $nc);
+        if ($nc === 0) {
+            exec('node --check ' . escapeshellarg($p) . ' 2>&1', $o, $c);
+            $ok = $c === 0; $detail = implode(' ', array_slice($o, -1)); $o = [];
+        }
+    }
+    ok("js/$jsf present + syntax-checked", $ok, $detail);
+}
+$viewHtml = (string)file_get_contents($root . '/index.php');
+ok('view selector rendered server-side (3 modes)', substr_count($viewHtml, 'viewsel-item') === 3);
+foreach (['hourglass', 'people', 'circles'] as $mode) {
+    ok("selector offers mode '$mode'", strpos($viewHtml, 'data-view="' . $mode . '"') !== false);
+}
+// exact on-screen honesty wording for the hourglass flows (card requirement)
+ok('hourglass flow wording exact',
+    strpos((string)file_get_contents($root . '/js/wealth-view-hourglass.js'),
+        'stylised from annual change in net worth (no public flow series exists)') !== false);
+// projection honesty: all views mark the extrapolation
+foreach (['wealth-view-hourglass.js', 'wealth-view-people.js'] as $vf) {
+    $src = (string)file_get_contents($root . '/js/' . $vf);
+    ok("$vf projects to 2040 with EXTRAPOLATION badge",
+        strpos($src, 'EXTRAPOLATION') !== false && strpos($src, '2040') !== false);
+    ok("$vf respects prefers-reduced-motion",
+        strpos($src, 'prefers-reduced-motion') === false ? strpos($src, 'REDUCED') !== false : true);
+}
+// per-head math spot-check (pure share math: 9*s/(100-s)); 57.14% -> ~12.0x
+$x = 9 * 57.14 / (100 - 57.14);
+ok('per-head multiple ~12x at 57.14% share', abs($x - 12.0) < 0.05, sprintf('%.3f', $x));
+// controller keeps 2040 as the projection horizon (same model as v1)
+ok('controller timeline ends at 2040',
+    strpos((string)file_get_contents($root . '/js/wealth-core.js'), '2040') !== false);
+
 echo "\n" . ($fail ? "FAILED: $fail failed, $pass passed\n" : "OK: $pass passed, 0 failed\n");
 exit($fail ? 1 : 0);

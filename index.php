@@ -111,7 +111,7 @@ function infog_view(string $slug): void
     if (!is_file($jsFile)) { http_response_code(404); exit('infographic not found'); }
     $slugE = e($slug);
     $titleE = e($s['title']);
-    $body = <<<HTML
+    $body = <<<HTML_VIEW_SCRIPTS
 <article class="view wrap">
 <nav class="crumb"><a href="/">← All infographics</a> · <a href="/about/{$slugE}">How it was built &amp; sources</a></nav>
 <h1>{$titleE}</h1>
@@ -148,8 +148,24 @@ function infog_view(string $slug): void
 <section id="infog-verdict" class="verdict" hidden>
   <h2>The verdict</h2>
 </section>
+
+<section id="infog-viewsel" class="viewsel" aria-label="Animation view mode">
+  <p class="viewsel-note">Three ways to see the same numbers:</p>
+  <ol class="viewsel-list" id="infog-view-select-list" role="listbox">
+    <li><button type="button" class="viewsel-item" role="option" aria-selected="true" data-view="hourglass">⧗ The Hourglass<span class="viewsel-hint">flows & sliding neck</span></button></li>
+    <li><button type="button" class="viewsel-item" role="option" aria-selected="false" data-view="people">👥 100 People, One Table<span class="viewsel-hint">coins & per-head split</span></button></li>
+    <li><button type="button" class="viewsel-item" role="option" aria-selected="false" data-view="circles">⬤ Circles (draft 1)<span class="viewsel-hint">the original pools</span></button></li>
+  </ol>
+</section>
 </article>
+HTML_VIEW_SCRIPTS;
+    $scripts = <<<HTML_SCRIPTS
+<script src="/js/wealth-core.js" defer></script>
+<script src="/js/wealth-view-circles.js" defer></script>
+<script src="/js/wealth-view-hourglass.js" defer></script>
+<script src="/js/wealth-view-people.js" defer></script>
 <script src="/js/{$slugE}.js" defer></script>
-HTML;
+HTML_SCRIPTS;
+    $body .= $scripts;
     echo infog_layout($s['title'], $body, $s['teaser']);
 }

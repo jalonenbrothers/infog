@@ -100,6 +100,28 @@ code { background: var(--cream-deep); padding: 0.1rem 0.3rem; border-radius: 3px
 pre { background: var(--navy-deep); color: var(--cream); padding: 0.8rem; overflow-x: auto; border-radius: 4px; }
 pre code { background: none; color: inherit; }
 
+/* ---------- view selector (draft-2) ---------- */
+.viewsel { margin-top: 1.6rem; }
+.viewsel-note { font-size: 0.85rem; color: var(--muted); margin: 0 0 0.6rem; }
+.viewsel-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.6rem; padding: 0; margin: 0; }
+.viewsel-item {
+  display: flex; flex-direction: column; align-items: flex-start; text-align: left;
+  padding: 0.55rem 0.9rem; background: var(--cream-deep);
+  border: 1px solid var(--line); border-radius: 4px; cursor: pointer;
+  font-family: "Gill Sans", "Trebuchet MS", system-ui, sans-serif;
+  font-size: 0.95rem; color: var(--navy); line-height: 1.2;
+}
+@media (prefers-color-scheme: dark) { .viewsel-item { color: #c9d3ec; } }
+.viewsel-item:hover { border-color: var(--red); }
+.viewsel-item:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+.viewsel-item.viewsel-active { background: var(--red); border-color: var(--red); color: #fff; }
+.viewsel-item.viewsel-active .viewsel-hint { color: #f4d9d9; }
+.viewsel-hint { display: block; font-size: 0.72rem; color: var(--muted); margin-top: 0.15rem; }
+
+@media (max-width: 430px) {
+  .viewsel-item { flex: 1 1 100%; }
+}
+
 /* ---------- Infographic stage ---------- */
 .stage {
   background: var(--cream-deep);
